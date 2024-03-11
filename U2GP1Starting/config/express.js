@@ -8,7 +8,7 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 
 // Define the Express configuration method
-module.exports = function() {
+module.exports = function () {
 	// Create a new Express application instance
 	const app = express();
 
@@ -20,18 +20,22 @@ module.exports = function() {
 	}
 
 	// Use the 'body-parser' and 'method-override' middleware functions
-	app.use(bodyParser.urlencoded({
-		extended: true
-	}));
+	app.use(
+		bodyParser.urlencoded({
+			extended: true,
+		})
+	);
 	app.use(bodyParser.json());
 	app.use(methodOverride());
 
 	// Configure the 'session' middleware
-	app.use(session({
-		saveUninitialized: true,
-		resave: true,
-		secret: config.sessionSecret
-	}));
+	app.use(
+		session({
+			saveUninitialized: true,
+			resave: true,
+			secret: config.sessionSecret,
+		})
+	);
 
 	// Set the application view engine and 'views' folder
 	app.set('views', './app/views');
@@ -39,6 +43,8 @@ module.exports = function() {
 
 	// Load the 'index' routing file
 	require('../app/routes/index.server.routes.js')(app);
+
+	require('../app/routes/user.server.routes.js')(app);
 
 	// Configure static file serving
 	app.use(express.static('./public'));

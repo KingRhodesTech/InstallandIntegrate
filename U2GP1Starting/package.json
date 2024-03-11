@@ -8,6 +8,7 @@
 		"body-parser": "1.15.2",
 		"method-override": "2.3.6",
 		"express-session": "1.14.1",
-		"ejs": "2.5.2"
+		"ejs": "2.5.2",
+		"mongoose": "7.2.3"
 	}
 }
